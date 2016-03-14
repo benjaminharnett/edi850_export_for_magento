@@ -1,7 +1,7 @@
 # This Makefile is for the Business::Logic extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.55_02 (Revision: 65502) from the contents of
+# 6.98 (Revision: 69800) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -12,10 +12,12 @@
 #   MakeMaker Parameters:
 
 #     ABSTRACT_FROM => q[lib/Business/Logic.pm]
-#     AUTHOR => q[root <root@(none)>]
+#     AUTHOR => [q[root <root@(none)>]]
 #     BUILD_REQUIRES => {  }
+#     CONFIGURE_REQUIRES => {  }
 #     NAME => q[Business::Logic]
 #     PREREQ_PM => {  }
+#     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[lib/Business/Logic.pm]
 
 # --- MakeMaker post_initialize section:
@@ -23,30 +25,30 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /usr/lib64/perl5/Config.pm).
+# These definitions are from config.sh (via /opt/local/lib/perl5/5.12.4/darwin-thread-multi-2level/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
-CC = gcc
-CCCDLFLAGS = -fPIC
-CCDLFLAGS = -Wl,-E -Wl,-rpath,/usr/lib64/perl5/CORE
-DLEXT = so
+CC = /usr/bin/clang
+CCCDLFLAGS =  
+CCDLFLAGS =  
+DLEXT = bundle
 DLSRC = dl_dlopen.xs
 EXE_EXT = 
-FULL_AR = /usr/bin/ar
-LD = gcc
-LDDLFLAGS = -shared -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic
-LDFLAGS =  -fstack-protector
+FULL_AR = /opt/local/bin/ar
+LD = env MACOSX_DEPLOYMENT_TARGET=10.3 /usr/bin/clang
+LDDLFLAGS = -L/opt/local/lib   -bundle -undefined dynamic_lookup -fstack-protector
+LDFLAGS = -L/opt/local/lib   -fstack-protector
 LIBC = 
 LIB_EXT = .a
 OBJ_EXT = .o
-OSNAME = linux
-OSVERS = 2.6.32-220.el6.x86_64
-RANLIB = :
-SITELIBEXP = /usr/local/share/perl5
-SITEARCHEXP = /usr/local/lib64/perl5
-SO = so
-VENDORARCHEXP = /usr/lib64/perl5/vendor_perl
-VENDORLIBEXP = /usr/share/perl5/vendor_perl
+OSNAME = darwin
+OSVERS = 12.2.0
+RANLIB = /opt/local/bin/ar s
+SITELIBEXP = /opt/local/lib/perl5/site_perl/5.12.4
+SITEARCHEXP = /opt/local/lib/perl5/site_perl/5.12.4/darwin-thread-multi-2level
+SO = dylib
+VENDORARCHEXP = /opt/local/lib/perl5/vendor_perl/5.12.4/darwin-thread-multi-2level
+VENDORLIBEXP = /opt/local/lib/perl5/vendor_perl/5.12.4
 
 
 # --- MakeMaker constants section:
@@ -68,58 +70,60 @@ INST_BIN = blib/bin
 INST_LIB = blib/lib
 INST_MAN1DIR = blib/man1
 INST_MAN3DIR = blib/man3
-MAN1EXT = 1
+MAN1EXT = 1pm
 MAN3EXT = 3pm
 INSTALLDIRS = site
-INSTALL_BASE = /home/flowsoci/perl5
 DESTDIR = 
-PREFIX = $(INSTALL_BASE)
-INSTALLPRIVLIB = $(INSTALL_BASE)/lib/perl5
+PREFIX = $(SITEPREFIX)
+PERLPREFIX = /opt/local
+SITEPREFIX = /opt/local
+VENDORPREFIX = /opt/local
+INSTALLPRIVLIB = /opt/local/lib/perl5/5.12.4
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = $(INSTALL_BASE)/lib/perl5
+INSTALLSITELIB = /opt/local/lib/perl5/site_perl/5.12.4
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
-INSTALLVENDORLIB = $(INSTALL_BASE)/lib/perl5
+INSTALLVENDORLIB = /opt/local/lib/perl5/vendor_perl/5.12.4
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = $(INSTALL_BASE)/lib/perl5/x86_64-linux-thread-multi
+INSTALLARCHLIB = /opt/local/lib/perl5/5.12.4/darwin-thread-multi-2level
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = $(INSTALL_BASE)/lib/perl5/x86_64-linux-thread-multi
+INSTALLSITEARCH = /opt/local/lib/perl5/site_perl/5.12.4/darwin-thread-multi-2level
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
-INSTALLVENDORARCH = $(INSTALL_BASE)/lib/perl5/x86_64-linux-thread-multi
+INSTALLVENDORARCH = /opt/local/lib/perl5/vendor_perl/5.12.4/darwin-thread-multi-2level
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
-INSTALLBIN = $(INSTALL_BASE)/bin
+INSTALLBIN = /opt/local/bin
 DESTINSTALLBIN = $(DESTDIR)$(INSTALLBIN)
-INSTALLSITEBIN = $(INSTALL_BASE)/bin
+INSTALLSITEBIN = /opt/local/libexec/perl5.12/sitebin
 DESTINSTALLSITEBIN = $(DESTDIR)$(INSTALLSITEBIN)
-INSTALLVENDORBIN = $(INSTALL_BASE)/bin
+INSTALLVENDORBIN = /opt/local/libexec/perl5.12
 DESTINSTALLVENDORBIN = $(DESTDIR)$(INSTALLVENDORBIN)
-INSTALLSCRIPT = $(INSTALL_BASE)/bin
+INSTALLSCRIPT = /opt/local/bin
 DESTINSTALLSCRIPT = $(DESTDIR)$(INSTALLSCRIPT)
-INSTALLSITESCRIPT = $(INSTALL_BASE)/bin
+INSTALLSITESCRIPT = /opt/local/libexec/perl5.12/sitebin
 DESTINSTALLSITESCRIPT = $(DESTDIR)$(INSTALLSITESCRIPT)
-INSTALLVENDORSCRIPT = $(INSTALL_BASE)/bin
+INSTALLVENDORSCRIPT = /opt/local/libexec/perl5.12
 DESTINSTALLVENDORSCRIPT = $(DESTDIR)$(INSTALLVENDORSCRIPT)
-INSTALLMAN1DIR = $(INSTALL_BASE)/man/man1
+INSTALLMAN1DIR = /opt/local/share/man/man1p
 DESTINSTALLMAN1DIR = $(DESTDIR)$(INSTALLMAN1DIR)
-INSTALLSITEMAN1DIR = $(INSTALL_BASE)/man/man1
+INSTALLSITEMAN1DIR = /opt/local/share/perl5.12/siteman/man1
 DESTINSTALLSITEMAN1DIR = $(DESTDIR)$(INSTALLSITEMAN1DIR)
-INSTALLVENDORMAN1DIR = $(INSTALL_BASE)/man/man1
+INSTALLVENDORMAN1DIR = /opt/local/share/perl5.12/man/man1
 DESTINSTALLVENDORMAN1DIR = $(DESTDIR)$(INSTALLVENDORMAN1DIR)
-INSTALLMAN3DIR = $(INSTALL_BASE)/man/man3
+INSTALLMAN3DIR = /opt/local/share/man/man3p
 DESTINSTALLMAN3DIR = $(DESTDIR)$(INSTALLMAN3DIR)
-INSTALLSITEMAN3DIR = $(INSTALL_BASE)/man/man3
+INSTALLSITEMAN3DIR = /opt/local/share/perl5.12/siteman/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
-INSTALLVENDORMAN3DIR = $(INSTALL_BASE)/man/man3
+INSTALLVENDORMAN3DIR = /opt/local/share/perl5.12/man/man3
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /usr/share/perl5
-PERL_ARCHLIB = /usr/lib64/perl5
+PERL_LIB = /opt/local/lib/perl5/5.12.4
+PERL_ARCHLIB = /opt/local/lib/perl5/5.12.4/darwin-thread-multi-2level
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /usr/lib64/perl5/CORE
-PERL = /usr/bin/perl
-FULLPERL = /usr/bin/perl
+PERL_INC = /opt/local/lib/perl5/5.12.4/darwin-thread-multi-2level/CORE
+PERL = /opt/local/bin/perl
+FULLPERL = /opt/local/bin/perl
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -132,9 +136,9 @@ PERM_DIR = 755
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /usr/share/perl5/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.55_02
-MM_REVISION = 65502
+MAKEMAKER   = /opt/local/lib/perl5/site_perl/5.12.4/ExtUtils/MakeMaker.pm
+MM_VERSION  = 6.98
+MM_REVISION = 69800
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -213,50 +217,50 @@ TO_INST_PM = lib/Business/Logic.pm \
 	lib/Business/Logic/Shipment.pm \
 	lib/Business/Logic/Shipping.pm
 
-PM_TO_BLIB = lib/Business/Logic/Option.pm \
+PM_TO_BLIB = lib/Business/Logic.pm \
+	blib/lib/Business/Logic.pm \
+	lib/Business/Logic/Address.pm \
+	blib/lib/Business/Logic/Address.pm \
+	lib/Business/Logic/Cart.pm \
+	blib/lib/Business/Logic/Cart.pm \
+	lib/Business/Logic/Company.pm \
+	blib/lib/Business/Logic/Company.pm \
+	lib/Business/Logic/Credit.pm \
+	blib/lib/Business/Logic/Credit.pm \
+	lib/Business/Logic/Customer.pm \
+	blib/lib/Business/Logic/Customer.pm \
+	lib/Business/Logic/Discount.pm \
+	blib/lib/Business/Logic/Discount.pm \
+	lib/Business/Logic/EDI.pm \
+	blib/lib/Business/Logic/EDI.pm \
+	lib/Business/Logic/Item.pm \
+	blib/lib/Business/Logic/Item.pm \
+	lib/Business/Logic/JSON.pm \
+	blib/lib/Business/Logic/JSON.pm \
+	lib/Business/Logic/Option.pm \
 	blib/lib/Business/Logic/Option.pm \
 	lib/Business/Logic/Options.pm \
 	blib/lib/Business/Logic/Options.pm \
-	lib/Business/Logic/Address.pm \
-	blib/lib/Business/Logic/Address.pm \
-	lib/Business/Logic/Customer.pm \
-	blib/lib/Business/Logic/Customer.pm \
 	lib/Business/Logic/Order.pm \
 	blib/lib/Business/Logic/Order.pm \
-	lib/Business/Logic/Cart.pm \
-	blib/lib/Business/Logic/Cart.pm \
-	lib/Business/Logic/Item.pm \
-	blib/lib/Business/Logic/Item.pm \
-	lib/Business/Logic.pm \
-	blib/lib/Business/Logic.pm \
-	lib/Business/Logic/Credit.pm \
-	blib/lib/Business/Logic/Credit.pm \
-	lib/Business/Logic/PurchaseOrder.pm \
-	blib/lib/Business/Logic/PurchaseOrder.pm \
-	lib/Business/Logic/EDI.pm \
-	blib/lib/Business/Logic/EDI.pm \
-	lib/Business/Logic/Shipment.pm \
-	blib/lib/Business/Logic/Shipment.pm \
 	lib/Business/Logic/PaymentMethod.pm \
 	blib/lib/Business/Logic/PaymentMethod.pm \
+	lib/Business/Logic/PurchaseOrder.pm \
+	blib/lib/Business/Logic/PurchaseOrder.pm \
+	lib/Business/Logic/Shipment.pm \
+	blib/lib/Business/Logic/Shipment.pm \
 	lib/Business/Logic/Shipping.pm \
-	blib/lib/Business/Logic/Shipping.pm \
-	lib/Business/Logic/Discount.pm \
-	blib/lib/Business/Logic/Discount.pm \
-	lib/Business/Logic/Company.pm \
-	blib/lib/Business/Logic/Company.pm \
-	lib/Business/Logic/JSON.pm \
-	blib/lib/Business/Logic/JSON.pm
+	blib/lib/Business/Logic/Shipping.pm
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.55_02
+MM_Unix_VERSION = 6.98
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
 # --- MakeMaker tool_autosplit section:
 # Usage: $(AUTOSPLITFILE) FileToSplit AutoDirToSplitInto
-AUTOSPLITFILE = $(ABSPERLRUN)  -e 'use AutoSplit;  autosplit($$ARGV[0], $$ARGV[1], 0, 1, 1)' --
+AUTOSPLITFILE = $(ABSPERLRUN)  -e 'use AutoSplit;  autosplit($$$$ARGV[0], $$$$ARGV[1], 0, 1, 1)' --
 
 
 
@@ -292,6 +296,7 @@ MACROSTART =
 MACROEND = 
 USEMAKEFILE = -f
 FIXIN = $(ABSPERLRUN) -MExtUtils::MY -e 'MY->fixin(shift)' --
+CP_NONEMPTY = $(ABSPERLRUN) -MExtUtils::Command::MM -e 'cp_nonempty' --
 
 
 # --- MakeMaker makemakerdflt section:
@@ -300,7 +305,7 @@ makemakerdflt : all
 
 
 # --- MakeMaker dist section:
-TAR = tar
+TAR = COPY_EXTENDED_ATTRIBUTES_DISABLE=1 COPYFILE_DISABLE=1 tar
 TARFLAGS = cvf
 ZIP = zip
 ZIPFLAGS = -r
@@ -340,8 +345,7 @@ DISTVNAME = Business-Logic-0.01
 
 PASTHRU = LIBPERL_A="$(LIBPERL_A)"\
 	LINKTYPE="$(LINKTYPE)"\
-	PREFIX="$(PREFIX)"\
-	INSTALL_BASE="$(INSTALL_BASE)"
+	PREFIX="$(PREFIX)"
 
 
 # --- MakeMaker special_targets section:
@@ -437,15 +441,15 @@ linkext :: $(LINKTYPE)
 # --- MakeMaker dlsyms section:
 
 
-# --- MakeMaker dynamic section:
-
-dynamic :: $(FIRST_MAKEFILE) $(INST_DYNAMIC) $(INST_BOOT)
-	$(NOECHO) $(NOOP)
-
-
 # --- MakeMaker dynamic_bs section:
 
 BOOTSTRAP =
+
+
+# --- MakeMaker dynamic section:
+
+dynamic :: $(FIRST_MAKEFILE) $(BOOTSTRAP) $(INST_DYNAMIC)
+	$(NOECHO) $(NOOP)
 
 
 # --- MakeMaker dynamic_lib section:
@@ -469,41 +473,41 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all  \
+	lib/Business/Logic.pm \
+	lib/Business/Logic/Address.pm \
+	lib/Business/Logic/Cart.pm \
+	lib/Business/Logic/Company.pm \
+	lib/Business/Logic/Credit.pm \
+	lib/Business/Logic/Customer.pm \
+	lib/Business/Logic/Discount.pm \
+	lib/Business/Logic/EDI.pm \
+	lib/Business/Logic/Item.pm \
+	lib/Business/Logic/JSON.pm \
 	lib/Business/Logic/Option.pm \
 	lib/Business/Logic/Options.pm \
-	lib/Business/Logic/Address.pm \
-	lib/Business/Logic/Customer.pm \
 	lib/Business/Logic/Order.pm \
-	lib/Business/Logic/Cart.pm \
-	lib/Business/Logic/Item.pm \
-	lib/Business/Logic.pm \
-	lib/Business/Logic/Credit.pm \
-	lib/Business/Logic/PurchaseOrder.pm \
-	lib/Business/Logic/EDI.pm \
-	lib/Business/Logic/Shipment.pm \
 	lib/Business/Logic/PaymentMethod.pm \
-	lib/Business/Logic/Shipping.pm \
-	lib/Business/Logic/Discount.pm \
-	lib/Business/Logic/Company.pm \
-	lib/Business/Logic/JSON.pm
+	lib/Business/Logic/PurchaseOrder.pm \
+	lib/Business/Logic/Shipment.pm \
+	lib/Business/Logic/Shipping.pm
 	$(NOECHO) $(POD2MAN) --section=3 --perm_rw=$(PERM_RW) \
+	  lib/Business/Logic.pm $(INST_MAN3DIR)/Business::Logic.$(MAN3EXT) \
+	  lib/Business/Logic/Address.pm $(INST_MAN3DIR)/Business::Logic::Address.$(MAN3EXT) \
+	  lib/Business/Logic/Cart.pm $(INST_MAN3DIR)/Business::Logic::Cart.$(MAN3EXT) \
+	  lib/Business/Logic/Company.pm $(INST_MAN3DIR)/Business::Logic::Company.$(MAN3EXT) \
+	  lib/Business/Logic/Credit.pm $(INST_MAN3DIR)/Business::Logic::Credit.$(MAN3EXT) \
+	  lib/Business/Logic/Customer.pm $(INST_MAN3DIR)/Business::Logic::Customer.$(MAN3EXT) \
+	  lib/Business/Logic/Discount.pm $(INST_MAN3DIR)/Business::Logic::Discount.$(MAN3EXT) \
+	  lib/Business/Logic/EDI.pm $(INST_MAN3DIR)/Business::Logic::EDI.$(MAN3EXT) \
+	  lib/Business/Logic/Item.pm $(INST_MAN3DIR)/Business::Logic::Item.$(MAN3EXT) \
+	  lib/Business/Logic/JSON.pm $(INST_MAN3DIR)/Business::Logic::JSON.$(MAN3EXT) \
 	  lib/Business/Logic/Option.pm $(INST_MAN3DIR)/Business::Logic::Option.$(MAN3EXT) \
 	  lib/Business/Logic/Options.pm $(INST_MAN3DIR)/Business::Logic::Options.$(MAN3EXT) \
-	  lib/Business/Logic/Address.pm $(INST_MAN3DIR)/Business::Logic::Address.$(MAN3EXT) \
-	  lib/Business/Logic/Customer.pm $(INST_MAN3DIR)/Business::Logic::Customer.$(MAN3EXT) \
 	  lib/Business/Logic/Order.pm $(INST_MAN3DIR)/Business::Logic::Order.$(MAN3EXT) \
-	  lib/Business/Logic/Cart.pm $(INST_MAN3DIR)/Business::Logic::Cart.$(MAN3EXT) \
-	  lib/Business/Logic/Item.pm $(INST_MAN3DIR)/Business::Logic::Item.$(MAN3EXT) \
-	  lib/Business/Logic.pm $(INST_MAN3DIR)/Business::Logic.$(MAN3EXT) \
-	  lib/Business/Logic/Credit.pm $(INST_MAN3DIR)/Business::Logic::Credit.$(MAN3EXT) \
-	  lib/Business/Logic/PurchaseOrder.pm $(INST_MAN3DIR)/Business::Logic::PurchaseOrder.$(MAN3EXT) \
-	  lib/Business/Logic/EDI.pm $(INST_MAN3DIR)/Business::Logic::EDI.$(MAN3EXT) \
-	  lib/Business/Logic/Shipment.pm $(INST_MAN3DIR)/Business::Logic::Shipment.$(MAN3EXT) \
 	  lib/Business/Logic/PaymentMethod.pm $(INST_MAN3DIR)/Business::Logic::PaymentMethod.$(MAN3EXT) \
-	  lib/Business/Logic/Shipping.pm $(INST_MAN3DIR)/Business::Logic::Shipping.$(MAN3EXT) \
-	  lib/Business/Logic/Discount.pm $(INST_MAN3DIR)/Business::Logic::Discount.$(MAN3EXT) \
-	  lib/Business/Logic/Company.pm $(INST_MAN3DIR)/Business::Logic::Company.$(MAN3EXT) \
-	  lib/Business/Logic/JSON.pm $(INST_MAN3DIR)/Business::Logic::JSON.$(MAN3EXT) 
+	  lib/Business/Logic/PurchaseOrder.pm $(INST_MAN3DIR)/Business::Logic::PurchaseOrder.$(MAN3EXT) \
+	  lib/Business/Logic/Shipment.pm $(INST_MAN3DIR)/Business::Logic::Shipment.$(MAN3EXT) \
+	  lib/Business/Logic/Shipping.pm $(INST_MAN3DIR)/Business::Logic::Shipping.$(MAN3EXT) 
 
 
 
@@ -530,23 +534,25 @@ clean_subdirs :
 
 clean :: clean_subdirs
 	- $(RM_F) \
-	  *$(LIB_EXT) core \
-	  core.[0-9] $(INST_ARCHAUTODIR)/extralibs.all \
-	  core.[0-9][0-9] $(BASEEXT).bso \
-	  pm_to_blib.ts core.[0-9][0-9][0-9][0-9] \
-	  $(BASEEXT).x $(BOOTSTRAP) \
-	  perl$(EXE_EXT) tmon.out \
-	  *$(OBJ_EXT) pm_to_blib \
-	  $(INST_ARCHAUTODIR)/extralibs.ld blibdirs.ts \
-	  core.[0-9][0-9][0-9][0-9][0-9] *perl.core \
-	  core.*perl.*.? $(MAKE_APERL_FILE) \
-	  perl $(BASEEXT).def \
-	  core.[0-9][0-9][0-9] mon.out \
-	  lib$(BASEEXT).def perlmain.c \
-	  perl.exe so_locations \
-	  $(BASEEXT).exp 
+	  $(BASEEXT).bso $(BASEEXT).def \
+	  $(BASEEXT).exp $(BASEEXT).x \
+	  $(BOOTSTRAP) $(INST_ARCHAUTODIR)/extralibs.all \
+	  $(INST_ARCHAUTODIR)/extralibs.ld $(MAKE_APERL_FILE) \
+	  *$(LIB_EXT) *$(OBJ_EXT) \
+	  *perl.core MYMETA.json \
+	  MYMETA.yml blibdirs.ts \
+	  core core.*perl.*.? \
+	  core.[0-9] core.[0-9][0-9] \
+	  core.[0-9][0-9][0-9] core.[0-9][0-9][0-9][0-9] \
+	  core.[0-9][0-9][0-9][0-9][0-9] lib$(BASEEXT).def \
+	  mon.out perl \
+	  perl$(EXE_EXT) perl.exe \
+	  perlmain.c pm_to_blib \
+	  pm_to_blib.ts so_locations \
+	  tmon.out 
 	- $(RM_RF) \
 	  blib 
+	  $(NOECHO) $(RM_F) $(MAKEFILE_OLD)
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
 
 
@@ -567,28 +573,69 @@ realclean purge ::  clean realclean_subdirs
 # --- MakeMaker metafile section:
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
-	$(NOECHO) $(ECHO) '--- #YAML:1.0' > META_new.yml
-	$(NOECHO) $(ECHO) 'name:               Business-Logic' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version:            0.01' >> META_new.yml
-	$(NOECHO) $(ECHO) 'abstract:           Perl extension for blah blah blah' >> META_new.yml
+	$(NOECHO) $(ECHO) '---' > META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: '\''Perl extension for blah blah blah'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    - root <root@(none)>' >> META_new.yml
-	$(NOECHO) $(ECHO) 'license:            unknown' >> META_new.yml
-	$(NOECHO) $(ECHO) 'distribution_type:  module' >> META_new.yml
-	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
+	$(NOECHO) $(ECHO) '  - '\''root <root@(none)>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
-	$(NOECHO) $(ECHO) 'requires:  {}' >> META_new.yml
-	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    directory:' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - t' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - inc' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by:       ExtUtils::MakeMaker version 6.55_02' >> META_new.yml
+	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''0'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''0'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142060'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'license: unknown' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    url:      http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
-	$(NOECHO) $(ECHO) '    version:  1.4' >> META_new.yml
+	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
+	$(NOECHO) $(ECHO) '  version: '\''1.4'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'name: Business-Logic' >> META_new.yml
+	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  directory:' >> META_new.yml
+	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
+	$(NOECHO) $(ECHO) '    - inc' >> META_new.yml
+	$(NOECHO) $(ECHO) 'requires: {}' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''0.01'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
+	$(NOECHO) $(ECHO) Generating META.json
+	$(NOECHO) $(ECHO) '{' > META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "Perl extension for blah blah blah",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '      "root <root@(none)>"' >> META_new.json
+	$(NOECHO) $(ECHO) '   ],' >> META_new.json
+	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
+	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142060",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "license" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '      "unknown"' >> META_new.json
+	$(NOECHO) $(ECHO) '   ],' >> META_new.json
+	$(NOECHO) $(ECHO) '   "meta-spec" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",' >> META_new.json
+	$(NOECHO) $(ECHO) '      "version" : "2"' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "name" : "Business-Logic",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "no_index" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "directory" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '         "t",' >> META_new.json
+	$(NOECHO) $(ECHO) '         "inc"' >> META_new.json
+	$(NOECHO) $(ECHO) '      ]' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "prereqs" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "build" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : "0"' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      },' >> META_new.json
+	$(NOECHO) $(ECHO) '      "configure" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : "0"' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      },' >> META_new.json
+	$(NOECHO) $(ECHO) '      "runtime" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {}' >> META_new.json
+	$(NOECHO) $(ECHO) '      }' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "0.01"' >> META_new.json
+	$(NOECHO) $(ECHO) '}' >> META_new.json
+	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
 
 # --- MakeMaker signature section:
@@ -610,7 +657,7 @@ manifest :
 	$(PERLRUN) "-MExtUtils::Manifest=mkmanifest" -e mkmanifest
 
 veryclean : realclean
-	$(RM_F) *~ */*~ *.orig */*.orig *.bak */*.bak *.old */*.old 
+	$(RM_F) *~ */*~ *.orig */*.orig *.bak */*.bak *.old */*.old
 
 
 
@@ -625,6 +672,7 @@ tardist : $(DISTVNAME).tar$(SUFFIX)
 
 uutardist : $(DISTVNAME).tar$(SUFFIX)
 	uuencode $(DISTVNAME).tar$(SUFFIX) $(DISTVNAME).tar$(SUFFIX) > $(DISTVNAME).tar$(SUFFIX)_uu
+	$(NOECHO) $(ECHO) 'Created $(DISTVNAME).tar$(SUFFIX)_uu'
 
 $(DISTVNAME).tar$(SUFFIX) : distdir
 	$(PREOP)
@@ -632,6 +680,7 @@ $(DISTVNAME).tar$(SUFFIX) : distdir
 	$(TAR) $(TARFLAGS) $(DISTVNAME).tar $(DISTVNAME)
 	$(RM_RF) $(DISTVNAME)
 	$(COMPRESS) $(DISTVNAME).tar
+	$(NOECHO) $(ECHO) 'Created $(DISTVNAME).tar$(SUFFIX)'
 	$(POSTOP)
 
 zipdist : $(DISTVNAME).zip
@@ -641,12 +690,14 @@ $(DISTVNAME).zip : distdir
 	$(PREOP)
 	$(ZIP) $(ZIPFLAGS) $(DISTVNAME).zip $(DISTVNAME)
 	$(RM_RF) $(DISTVNAME)
+	$(NOECHO) $(ECHO) 'Created $(DISTVNAME).zip'
 	$(POSTOP)
 
 shdist : distdir
 	$(PREOP)
 	$(SHAR) $(DISTVNAME) > $(DISTVNAME).shar
 	$(RM_RF) $(DISTVNAME)
+	$(NOECHO) $(ECHO) 'Created $(DISTVNAME).shar'
 	$(POSTOP)
 
 
@@ -680,15 +731,19 @@ ci :
 
 # --- MakeMaker distmeta section:
 distmeta : create_distdir metafile
-	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{META.yml} => q{Module meta-data (added by MakeMaker)}}) } ' \
-	  -e '    or print "Could not add META.yml to MANIFEST: $${'\''@'\''}\n"' --
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -e q{META.yml};' \
+	  -e 'eval { maniadd({q{META.yml} => q{Module YAML meta-data (added by MakeMaker)}}) }' \
+	  -e '    or print "Could not add META.yml to MANIFEST: $$$${'\''@'\''}\n"' --
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -f q{META.json};' \
+	  -e 'eval { maniadd({q{META.json} => q{Module JSON meta-data (added by MakeMaker)}}) }' \
+	  -e '    or print "Could not add META.json to MANIFEST: $$$${'\''@'\''}\n"' --
 
 
 
 # --- MakeMaker distsignature section:
 distsignature : create_distdir
-	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{SIGNATURE} => q{Public-key signature (added by MakeMaker)}}) } ' \
-	  -e '    or print "Could not add SIGNATURE to MANIFEST: $${'\''@'\''}\n"' --
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{SIGNATURE} => q{Public-key signature (added by MakeMaker)}}) }' \
+	  -e '    or print "Could not add SIGNATURE to MANIFEST: $$$${'\''@'\''}\n"' --
 	$(NOECHO) cd $(DISTVNAME) && $(TOUCH) SIGNATURE
 	cd $(DISTVNAME) && cpansign -s
 
@@ -757,6 +812,7 @@ pure_vendor_install :: all
 		$(INST_SCRIPT) $(DESTINSTALLVENDORSCRIPT) \
 		$(INST_MAN1DIR) $(DESTINSTALLVENDORMAN1DIR) \
 		$(INST_MAN3DIR) $(DESTINSTALLVENDORMAN3DIR)
+
 
 doc_perl_install :: all
 	$(NOECHO) $(ECHO) Appending installation info to $(DESTINSTALLARCHLIB)/perllocal.pod
@@ -834,7 +890,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = /usr/bin/perl
+FULLPERL      = /opt/local/bin/perl
 
 $(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) $(USEMAKEFILE) $(MAKE_APERL_FILE) $@
@@ -864,7 +920,7 @@ subdirs-test ::
 
 
 test_dynamic :: pure_all
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-e" "test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
+	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
 
 testdb_dynamic :: pure_all
 	PERL_DL_NONLAZY=1 $(FULLPERLRUN) $(TESTDB_SW) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
@@ -878,11 +934,11 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.01">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>Perl extension for blah blah blah</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>root &lt;root@(none)&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-thread-multi-5.10" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-thread-multi-2level-5.12" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd
@@ -892,23 +948,23 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
+	  lib/Business/Logic.pm blib/lib/Business/Logic.pm \
+	  lib/Business/Logic/Address.pm blib/lib/Business/Logic/Address.pm \
+	  lib/Business/Logic/Cart.pm blib/lib/Business/Logic/Cart.pm \
+	  lib/Business/Logic/Company.pm blib/lib/Business/Logic/Company.pm \
+	  lib/Business/Logic/Credit.pm blib/lib/Business/Logic/Credit.pm \
+	  lib/Business/Logic/Customer.pm blib/lib/Business/Logic/Customer.pm \
+	  lib/Business/Logic/Discount.pm blib/lib/Business/Logic/Discount.pm \
+	  lib/Business/Logic/EDI.pm blib/lib/Business/Logic/EDI.pm \
+	  lib/Business/Logic/Item.pm blib/lib/Business/Logic/Item.pm \
+	  lib/Business/Logic/JSON.pm blib/lib/Business/Logic/JSON.pm \
 	  lib/Business/Logic/Option.pm blib/lib/Business/Logic/Option.pm \
 	  lib/Business/Logic/Options.pm blib/lib/Business/Logic/Options.pm \
-	  lib/Business/Logic/Address.pm blib/lib/Business/Logic/Address.pm \
-	  lib/Business/Logic/Customer.pm blib/lib/Business/Logic/Customer.pm \
 	  lib/Business/Logic/Order.pm blib/lib/Business/Logic/Order.pm \
-	  lib/Business/Logic/Cart.pm blib/lib/Business/Logic/Cart.pm \
-	  lib/Business/Logic/Item.pm blib/lib/Business/Logic/Item.pm \
-	  lib/Business/Logic.pm blib/lib/Business/Logic.pm \
-	  lib/Business/Logic/Credit.pm blib/lib/Business/Logic/Credit.pm \
-	  lib/Business/Logic/PurchaseOrder.pm blib/lib/Business/Logic/PurchaseOrder.pm \
-	  lib/Business/Logic/EDI.pm blib/lib/Business/Logic/EDI.pm \
-	  lib/Business/Logic/Shipment.pm blib/lib/Business/Logic/Shipment.pm \
 	  lib/Business/Logic/PaymentMethod.pm blib/lib/Business/Logic/PaymentMethod.pm \
-	  lib/Business/Logic/Shipping.pm blib/lib/Business/Logic/Shipping.pm \
-	  lib/Business/Logic/Discount.pm blib/lib/Business/Logic/Discount.pm \
-	  lib/Business/Logic/Company.pm blib/lib/Business/Logic/Company.pm \
-	  lib/Business/Logic/JSON.pm blib/lib/Business/Logic/JSON.pm 
+	  lib/Business/Logic/PurchaseOrder.pm blib/lib/Business/Logic/PurchaseOrder.pm \
+	  lib/Business/Logic/Shipment.pm blib/lib/Business/Logic/Shipment.pm \
+	  lib/Business/Logic/Shipping.pm blib/lib/Business/Logic/Shipping.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 

@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 use DBI;
+use Getopt::Long;
 
 ## Magento configuration ##
 my $username;
