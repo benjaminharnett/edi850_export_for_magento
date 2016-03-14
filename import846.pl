@@ -12,6 +12,28 @@ my $password;
 my $source_folder;
 my $upc_attribute_id;
 
+GetOptions ("username=s" => \$username,    
+	    "host=s"   => \$host,      
+	    "database=s"  => \$database,
+	    "password=s" => \$password,
+	    "source=s" => \$soruce_folder,
+	    "upcattribute=i" => \$upc_attribute_id
+    )
+    or die("Error in command line arguments\n");
+
+if !defined $password
+{
+    print "Password: ";
+    $password = <STDIN>;
+    chomp $password;
+}
+
+if !defined $username || !defined $host || !defined $database || !defined $password || !defined $source_folder || !defined $upc_attribute_id
+{
+    die("You must specify required options\n");
+    exit;
+}
+
 open FILE,$source_folder . 'EDOBIW';
 
 my $inventory_list = '';

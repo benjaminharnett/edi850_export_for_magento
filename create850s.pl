@@ -24,6 +24,29 @@ my $edi_sender;
 my $edi_recipient;
 my $destination_folder;
 
+GetOptions ("username=s" => \$username,    
+	    "host=s"   => \$host,      
+	    "database=s"  => \$database,
+	    "password=s" => \$password,
+	    "sender=s" => \$edi_sender,
+	    "recipient=s" => \$edi_recipient,
+	    "destination=s" => \$destination_folder
+    )
+    or die("Error in command line arguments\n");
+
+if !defined $password
+{
+    print "Password: ";
+    $password = <STDIN>;
+    chomp $password;
+}
+
+if !defined $username || !defined $host || !defined $database || !defined $password || !defined $sender || !defined $recipient || !defined $destination
+{
+    die("You must specify required options\n");
+    exit;
+}
+
 my $dbh = DBI->connect("DBI:mysql:database=$database:host=$host",$username,$password);
 
 my $statement = 'select * from sales_flat_order WHERE status in (\'pending\',\'processing\') AND (entity_id NOT IN (select order_id from edi_table))';
