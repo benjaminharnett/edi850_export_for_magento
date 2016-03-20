@@ -2,7 +2,8 @@
 
 1. Install BusinessLogic.pm, it's a collection of utilities designed for e-commerce sites.
 
-```cd Business-Logic-0.01/
+```
+cd Business-Logic-0.01/
 perl Makefile.pl
 make
 make test
