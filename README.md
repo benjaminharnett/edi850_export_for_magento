@@ -1,5 +1,7 @@
 # edi850_export_for_magento
 
+This project comprises two Perl scripts you can use to export EDI 850 files from your Magento install, which can be used to interact with warehouses and older accounting software. You can also import EDI 846 inventory files.
+
 ## Step 1.
 Install BusinessLogic.pm, it's a collection of utilities designed for e-commerce sites.
 
