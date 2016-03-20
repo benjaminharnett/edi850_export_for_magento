@@ -2,11 +2,12 @@
 
 1. Install BusinessLogic.pm, it's a collection of utilities designed for e-commerce sites.
 
-   `cd Business-Logic-0.01/
-   `perl Makefile.pl
-   `make
-   `make test
-   `make install
+```cd Business-Logic-0.01/
+perl Makefile.pl
+make
+make test
+make install
+```
    
 2. You can now run create850s.pl from the commandline, with the following options:
 
