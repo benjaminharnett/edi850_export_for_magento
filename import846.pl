@@ -17,7 +17,7 @@ GetOptions ("username=s" => \$username,
 	    "host=s"   => \$host,      
 	    "database=s"  => \$database,
 	    "password=s" => \$password,
-	    "source=s" => \$soruce_folder,
+	    "source=s" => \$source_folder,
 	    "upcattribute=i" => \$upc_attribute_id
     )
     or die("Error in command line arguments\n");
