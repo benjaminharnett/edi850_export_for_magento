@@ -176,6 +176,13 @@ sub edi_850
     return $self->generate($id,850);
 }
 
+sub edi_855
+{
+    my ($self,$id) = @_;
+    
+    return $self->generate($id,855);
+}
+
 sub generate
 {
     my ($self, $id, $type) = @_;
@@ -297,7 +304,7 @@ sub billing_address
 
 sub get_service_level_code
 {
-    my ($service_level,$order) = @_;
+    my ($self, $service_level,$order) = @_;
     
     if($service_level eq 'UPS Ground')
     {
@@ -404,39 +411,114 @@ sub st
 {
     my ($self,$type,$item) = @_;
     
-    my $row_data = ['ST','850',$item->{'id'}];
-    my $row_format = [{size=>2},{size=>3},{size=>9,padleft=>0}];
+    if ($type == '855')
+    {
+	my $row_data = ['ST','855',$item->{'id'}];
+	my $row_format = [{size=>2},{size=>3},{size=>9,padleft=>0}];
 
-    my $header_row = $self->row($row_data,$row_format);
+	my $header_row = $self->row($row_data,$row_format);
+	
+	my $rows = '';
+
+	$row_data = ['BAK','0','AD',$item->{'order number'},$self->get_gs_date($item->{'order date'})];
+	$row_format = [{size=>3},{size=>2,padleft=>'0'}];
+	$rows .= $self->row($row_data,$row_format);
+
+	$row_data = ['REF','IA','3310912'];
+	$row_format = [{size=>3},{size=>2}];
+	$rows .= $self->row($row_data,$row_format);
+
+	$row_data = ['DTM','002',$self->get_gs_date($item->{'order date'})];
+	$row_format = [{size=>3},{size=>2}];
+	$rows .= $self->row($row_data,$row_format);
+
+	$row_data = ['N1','OB',$item->{'ship address'}->{'firstname'} . ' ' . $item->{'ship address'}->{'lastname'}];
+	$row_format = [{size=>2},{size=>2}];
+	$rows .= $self->row($row_data,$row_format);
+
+	$row_data = ['N3',$item->{'ship address'}->{'address1'}, $item->{'ship address'}->{'address2'}];
+	$row_format = [{size=>2}];
+	$rows .= $self->row($row_data,$row_format);
+
+	$row_data = ['N4',$item->{'ship address'}->{'city'}, $item->{'ship address'}->{'state'}, $item->{'ship address'}->{'zip'}, $item->{'ship address'}->{'country'}];
+	$row_format = [{size=>2}];
+	$rows .= $self->row($row_data,$row_format);
+	
+	my $po_lines = 0;
+	foreach my $line (@{$item->{'items'}})
+	{
+	    $po_lines++;
+
+	    my $line_item = $po_lines;
+	    my $qty = $line->{'qty'};
+	    my $unit = 'EA';
+	    my $price = sprintf("%010.2f",$line->{'cost'});
+	    my $po106 = 'IT';
+	    my $po107 = $line->{'model number'};
+
+	    $row_data = ['PO1',$line_item,$qty,$unit,$price,'',$po106,$po107];
+	    $row_format = [{size=>3}];
+	    $rows .= $self->row($row_data,$row_format);
+
+	    $row_data = ['PID','F','08','','',$line->{'model number'} . ' ' . $line->{'manufacturer'} . ' ' . $line->{'title'}];
+	    $row_format = [{size=>3}];
+	    $rows .= $self->row($row_data,$row_format);
+
+	    $row_data = ['ACK','IA',$qty,'EA','068',$self->get_gs_date($item->{'order date'})];
+	    $row_format = [{size=>3}];
+	    $rows .= $self->row($row_data,$row_format);
+	}
+
+	$row_data = ['CTT',$po_lines,''];
+	$row_format = [{size=>3}];
+	$rows .= $self->row($row_data,$row_format);
+
+	my @rows = split(/\n/,$rows);
     
-    my $rows = '';
-
-    $row_data = ['BEG','0','SA',$item->{'order_number'},'',$self->get_gs_date($item->order_date),'','','','','','','DP'];
-    $row_format = [{size=>3},{size=>2,padleft=>'0'}];
-    $rows .= $self->row($row_data,$row_format);
-
-    $row_data = ['REF','DP','WEBSITE'];
-    $row_format = [];
-    $rows .= $self->row($row_data,$row_format);
-
-    $row_data = ['PER','DC',$item->customer_name()];
-    $row_format = [];
-    $rows .= $self->row($row_data,$row_format);
+	$row_data = ['SE',(scalar @rows) + 2,$item->{'id'}];
+	$row_format = [{size=>2},{},{size=>9,padleft=>0}];
+	
+	my $footer_row = $self->row($row_data,$row_format);
+	
+	return $header_row . $rows . $footer_row;
     
-    $rows .= $self->shipping_address($item->{'shipping_address'});
-    $rows .= $self->billing_address($item->{'billing_address'});
-    $rows .= $self->shipping_message($item->{'cart'},$item);
-    
-    $rows .= $self->items($item->{'cart'},$item);
-    
-    my @rows = split(/\n/,$rows);
-    
-    $row_data = ['SE',(scalar @rows) + 2,$item->{'id'}];
-    $row_format = [{size=>2},{},{size=>9,padleft=>0}];
+    }
+    elsif ($type == '850')
+    {
+	my $row_data = ['ST','850',$item->{'id'}];
+	my $row_format = [{size=>2},{size=>3},{size=>9,padleft=>0}];
 
-    my $footer_row = $self->row($row_data,$row_format);
+	my $header_row = $self->row($row_data,$row_format);
+	
+	my $rows = '';
 
-    return $header_row . $rows . $footer_row;
+	$row_data = ['BEG','0','SA',$item->{'order_number'},'',$self->get_gs_date($item->order_date),'','','','','','','DP'];
+	$row_format = [{size=>3},{size=>2,padleft=>'0'}];
+	$rows .= $self->row($row_data,$row_format);
+
+	$row_data = ['REF','DP','WEBSITE'];
+	$row_format = [];
+	$rows .= $self->row($row_data,$row_format);
+	
+	$row_data = ['PER','DC',$item->customer_name()];
+	$row_format = [];
+	$rows .= $self->row($row_data,$row_format);
+    
+	$rows .= $self->shipping_address($item->{'shipping_address'});
+	$rows .= $self->billing_address($item->{'billing_address'});
+	$rows .= $self->shipping_message($item->{'cart'},$item);
+    
+	$rows .= $self->items($item->{'cart'},$item);
+	
+	my @rows = split(/\n/,$rows);
+    
+	$row_data = ['SE',(scalar @rows) + 2,$item->{'id'}];
+	$row_format = [{size=>2},{},{size=>9,padleft=>0}];
+	
+	my $footer_row = $self->row($row_data,$row_format);
+	
+	return $header_row . $rows . $footer_row;
+    }
 }
 
 sub gs
